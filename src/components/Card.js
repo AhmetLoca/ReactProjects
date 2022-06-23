@@ -2,15 +2,20 @@ import React from 'react';
 
 const Card = (props) => {
   return (
-      <div className="card">
-        <img src={props.image} className="card-img-top" alt="..."/>
-        <div className="card-body">
+    <div className="card w-100">
+      <img src={props.image} className="card-img-top" alt="..." />
+      <div className="card-body">
         <h5 className="card-title">{props.cardTitle}</h5>
         <p className="card-text">{props.cardText}</p>
         <p className="card-text"><small clasName="text-muted">{props.updatedTime}</small></p>
-        </div>
-     </div>
+      </div>
+    </div>
   );
 };
+
+
+Card.defaultProps = {
+  cardTitle: "Default Card Title"
+}
 
 export default Card;

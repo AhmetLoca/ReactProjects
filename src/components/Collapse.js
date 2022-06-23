@@ -1,28 +1,31 @@
+// -> ilk constructor -> state initialization
+// render metodu ilk defa calıstı.
+//onClick event'i calıstı.(showMore metodu calıstı)
+//showMore metodu setState yardımıyla bizim state'imizi update etti.
+//setState metodu render() metodunu trigger ediyor !
+//son olarak render metodu güncel JSX'i sayfada gösteriyor.
+
 import React from 'react';
-
-//Fonksiyonel component
 class Collapse extends React.Component {
-
   constructor() {
-    //React.Component içerisinde hazir var olan constructor metodunun üzerine yazıyoruz.
     super();
-    //React.Component içerisindeki constructor metoduna ait olan tüm öz. almamızı saglıyor
-
-    //State'i oluşturmak için en uygun yerlerden bir tanesi constructor metodunun içerisidir.
 
     this.state = {
       showContent: false
     }
   }
 
+  showMore = () => {
+    this.setState({ showContent: !this.state.showContent })
+
+  }
 
   render() {
     return (
       <div>
-        <p className="btn btn-primary w-100">
+        <button className="btn btn-primary w-100" onClick={this.showMore}>
           Link with href
-        </p>
-
+        </button>
         {
           this.state.showContent ? (
             <div className="collapse show">
@@ -30,7 +33,6 @@ class Collapse extends React.Component {
             </div>
           ) : null
         }
-
       </div>
     );
   }

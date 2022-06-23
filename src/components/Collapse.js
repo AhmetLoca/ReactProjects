@@ -1,19 +1,39 @@
 import React from 'react';
 
 //Fonksiyonel component
-const Collapse = (props) => {
+class Collapse extends React.Component {
 
-  return (
-    //diez ile index.js'den gelen linki birleştirdim. 
-    <div>
-      <a className="btn btn-primary w-100" data-toggle="collapse" href={"#".concat(props.href)} role="button" aria-expanded="false" aria-controls="collapseExample">
-        Link with href
-      </a>
-      <div className="collapse show" id={props.href}>
-        {props.children}
+  constructor() {
+    //React.Component içerisinde hazir var olan constructor metodunun üzerine yazıyoruz.
+    super();
+    //React.Component içerisindeki constructor metoduna ait olan tüm öz. almamızı saglıyor
+
+    //State'i oluşturmak için en uygun yerlerden bir tanesi constructor metodunun içerisidir.
+
+    this.state = {
+      showContent: false
+    }
+  }
+
+
+  render() {
+    return (
+      <div>
+        <p className="btn btn-primary w-100">
+          Link with href
+        </p>
+
+        {
+          this.state.showContent ? (
+            <div className="collapse show">
+              {this.props.children}
+            </div>
+          ) : null
+        }
+
       </div>
-    </div >
-  );
+    );
+  }
 };
 
 export default Collapse;

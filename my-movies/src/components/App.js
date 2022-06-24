@@ -1,8 +1,7 @@
 import React from 'react';
-import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 
-// movies bilgisini bir state içerisinde tanımlamamız gerek. State kullandıgımız için fonksiyonel component'imi class base bi component'ta cevirecegim
+// movies bilgisini bir state içerisinde tanımlamamız gerek. State kullandıgımız için fonksiyonel component'imi class base bi component'ta cevirecegim.
 
 class App extends React.Component {
 
@@ -21,7 +20,7 @@ class App extends React.Component {
         "name": "Interstellar",
         "rating": 6.3,
         "overview": "This is a wider card with supporting text below as natural lead-in to additional content.",
-        "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gEU2QniE6E77NI61CU6Mx1NBvIx.jpg"
+        "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg"
       },
 
       {
@@ -39,10 +38,13 @@ class App extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <SearchBar />
           </div>
         </div>
-        <MovieList />
+        <MovieList
+          movies={this.state.movies}
+
+
+        />
       </div>
     )
   }

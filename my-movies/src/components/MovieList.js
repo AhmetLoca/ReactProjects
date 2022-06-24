@@ -1,6 +1,7 @@
 import React from 'react';
 
 const MovieList = (props) => {
+
   return (
     <div className="row" >
 
@@ -13,7 +14,7 @@ const MovieList = (props) => {
                 <h5 className="card-title">{movie.name}</h5>
                 <p className="card-text">{movie.overview}</p>
                 <div className="d-flex justify-content-between align-items-center">
-                  <button className="btn btn-md btn-outline-danger" type="button">Delete</button>
+                  <button onClick={(event) => props.deleteMovieProp(movie)} className="btn btn-md btn-outline-danger" type="button">Delete</button>
                   <button className="btn btn-md btn-outline-primary">{movie.rating}</button>
                 </div>
               </div>
@@ -21,9 +22,6 @@ const MovieList = (props) => {
           </div>
         ))
       }
-
-
-
 
     </div >
   )

@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 
 // movies bilgisini bir state içerisinde tanımlamamız gerek. State kullandıgımız için fonksiyonel component'imi class base bi component'ta cevirecegim.
@@ -47,6 +48,7 @@ class App extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
+            <SearchBar />
           </div>
         </div>
         <MovieList

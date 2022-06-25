@@ -16,7 +16,7 @@ class App extends React.Component {
     this.setState({ movies: response.data })
   }
 
-  //AXIOS API
+  //Delete Movie
   deleteMovie = async (movie) => {
     axios.delete(`http://localhost:3002/movies/${movie.id}`)
 
@@ -28,8 +28,17 @@ class App extends React.Component {
     })
   }
 
+  //Search Movie
   searchMovie = (event) => {
     this.setState({ searchQuery: event.target.value })
+  }
+
+  //Add Movie
+  addMovie = async (movie) => {
+    await axios.post(`http://localhost:3002/movies/`, movie)
+    this.setState(state => ({
+      movies: state.movies.concat([movie])
+    }))
   }
 
   render() {
@@ -60,6 +69,8 @@ class App extends React.Component {
           }>
           </Route>
           <Route path="add" element={<AddMovie />} />
+
+
         </Routes>
       </Router>
     );

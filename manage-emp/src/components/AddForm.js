@@ -1,13 +1,33 @@
 import { Form, Button } from 'react-bootstrap';
+import { EmployeeContext } from '../contexts/EmployeeContext';
+import { useContext, useState } from 'react';
 
 const AddForm = () => {
+
+  //addEmployee metotdunu extract ediyorum.
+  const { addEmployee } = useContext(EmployeeContext);
+  //EmployeeContext'ten 2 tane veri alabiliyoruz. 1.employees 2.addEmployee
+
+  //Herbir form elemanını ayrı bir state elemanı olarak dusunuyorum.
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addEmployee(name, email, address, phone)
+  }
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
 
       <Form.Group>
         <Form.Control
           type="text"
           placeholder="Name *"
+          value={name}
+          onChange={e => setName(e.target.value)}
         />
       </Form.Group>
 
@@ -15,6 +35,8 @@ const AddForm = () => {
         <Form.Control
           type="email"
           placeholder="Email *"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
           required
         />
       </Form.Group>
@@ -23,14 +45,18 @@ const AddForm = () => {
         <Form.Control
           as="textarea"
           placeholder="Address *"
+          value={address}
+          onChange={e => setAddress(e.target.value)}
           rows={3}
         />
       </Form.Group>
 
       <Form.Group>
         <Form.Control
-          type="email"
+          type="text"
           placeholder="Phone"
+          value={phone}
+          onChange={e => setPhone(e.target.value)}
         />
       </Form.Group>
 

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import Employee from './Employee';
 import { Button, Modal } from 'react-bootstrap';
 import { EmployeeContext } from '../contexts/EmployeeContext';
@@ -12,6 +12,19 @@ const EmployeeList = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    handleClose();
+  }, [employees])
+
+
+  const myRef = useRef(null); //başlangıç degerinde bir şey istemiyorum
+
+  const onButtonClick = () => {
+    myRef.current.focus();
+  }
+
+
   return (
     <>
       <div className="table-title">
@@ -51,6 +64,9 @@ const EmployeeList = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <input ref={myRef} type="text"></input>
+      <button onClick={onButtonClick}>Focus Input</button>
     </>
   )
 

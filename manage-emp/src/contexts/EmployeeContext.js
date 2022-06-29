@@ -12,13 +12,19 @@ const EmployeeContextProvider = (props) => {
     { id: uuidv4(), name: 'Martin Blank', email: 'martinblank@mail.com', address: 'Via Monte Bianco 34, Turin, Italy', phone: '(480) 631-2097' }
   ])
 
-  // yeni bir eklemekle setEmplyoees'i çalıştıracagım
+  // yeni bir eklemek ile setEmplyoees'i çalıştıracagım
   const addEmployee = (name, email, address, phone) => {
     setEmployees([...employees, { id: uuidv4(), name: name, email: email, address: address, phone: phone }])
   }
 
-  return (
-    <EmployeeContext.Provider value={{ employees, addEmployee }}>
+
+  const deleteEmployee = (id) => {
+    setEmployees(employees.filter(employee => employee.id !== id))
+  }
+
+
+  return ( //deleteEmployee'i Provider'a koyacağız ki farklı componentlerden bunu çağırdıgımız zaman görebilelim. Biz bunu hangi componentta kullanacaksak deleteEmployee metodunu orada çağıracagız.
+    <EmployeeContext.Provider value={{ employees, addEmployee, deleteEmployee }}>
       {props.children}
     </EmployeeContext.Provider>
   )

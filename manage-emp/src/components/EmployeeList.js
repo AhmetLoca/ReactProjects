@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Employee from './Employee';
 import { Button, Modal } from 'react-bootstrap';
 import { EmployeeContext } from '../contexts/EmployeeContext';
@@ -16,13 +16,6 @@ const EmployeeList = () => {
   useEffect(() => {
     handleClose();
   }, [employees])
-
-
-  const myRef = useRef(null); //başlangıç degerinde bir şey istemiyorum
-
-  const onButtonClick = () => {
-    myRef.current.focus();
-  }
 
 
   return (
@@ -46,7 +39,13 @@ const EmployeeList = () => {
           </tr>
         </thead>
         <tbody>
-          <Employee employees={employees} />
+          {
+            employees.map((employee) => (
+              <tr key={employee.id}>
+                <Employee employee={employee}></Employee>
+              </tr>
+            ))
+          }
         </tbody>
       </table>
       <Modal show={show} onHide={handleClose}>
@@ -64,9 +63,6 @@ const EmployeeList = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-
-      <input ref={myRef} type="text"></input>
-      <button onClick={onButtonClick}>Focus Input</button>
     </>
   )
 

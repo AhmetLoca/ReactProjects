@@ -26,6 +26,7 @@ const AddForm = () => {
         <Form.Control
           type="text"
           placeholder="Name *"
+          name="name"
           value={name}
           onChange={e => setName(e.target.value)}
         />
@@ -35,6 +36,7 @@ const AddForm = () => {
         <Form.Control
           type="email"
           placeholder="Email *"
+          name="email"
           value={email}
           onChange={e => setEmail(e.target.value)}
           required
@@ -45,6 +47,7 @@ const AddForm = () => {
         <Form.Control
           as="textarea"
           placeholder="Address *"
+          name="address"
           value={address}
           onChange={e => setAddress(e.target.value)}
           rows={3}
@@ -55,6 +58,7 @@ const AddForm = () => {
         <Form.Control
           type="text"
           placeholder="Phone"
+          name="phone"
           value={phone}
           onChange={e => setPhone(e.target.value)}
         />
